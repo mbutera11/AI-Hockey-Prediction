@@ -1,11 +1,11 @@
 <?php
-    include "functions.php";
+include "functions.php";
 ?>
 
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Testing API...</title>
+    <title>Teams</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <link rel="stylesheet" href="assets/css/main.css"/>
@@ -27,21 +27,17 @@
                     <!-- Main Content -->
                     <section>
                         <header>
-                            <h2>Getting Info</h2>
+                            <h2>Team Info</h2>
                         </header>
 
                         <p>
                             <?php
-                                $conn = getConnection();
-
-                                $url = "https://statsapi.web.nhl.com/api";
-                                $next_game = "/v1/teams/18/?expand=team.schedule.next";
-                                $team_stats = "/v1/teams/18/?expand=team.stats";
-                                $all_games_lastYear = "/v1/schedule?startDate=2017-10-04&endDate=2018-04-04";
-                                $all_games_today = "/v1/schedule?startDate=2018-10-12&endDate=2018-10-12";
-
-                                $jsonString = file_get_contents($url.$all_games_lastYear);
-                                echo prettyPrint($jsonString);
+                            $conn = getConnection();
+                            $sql = "SELECT * FROM teams";
+                            $result = $conn -> query($sql);
+                            while($row = $result -> fetch_assoc()) {
+                                echo $row['id']." -> ".$row['name']." -> ".$row['abbreviation']." -> ".$row['location']." -> ".$row['conference']." -> ".$row['division']."<br>";
+                            }
 
                             ?>
                         </p>
@@ -135,4 +131,3 @@
 
 </body>
 </html>
-

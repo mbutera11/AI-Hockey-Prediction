@@ -8,8 +8,9 @@
             <!-- Nav -->
             <nav id="nav">
                 <a href="index.php">Homepage</a>
-                <a href="apitest.php">Test API
-                </a>
+                <a href="teams.php">Teams</a>
+                <a href="apitest.php">Test API</a>
+                <a href="buildDB.php">Build DB</a>
             </nav>
 
         </div>

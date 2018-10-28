@@ -59,11 +59,11 @@
         $streakArray = array();
         $dayBeforeGames = array();
         $dayOfGames = array();
-        $teams_from_db = $conn -> query("SELECT name FROM teams");
+        $teams_from_db = $conn -> query("SELECT id FROM teams");
         while($row = $teams_from_db -> fetch_assoc()) {
-            $streakArray = array_push_assoc($streakArray, $row['name'], 0);
-            $dayBeforeGames = array_push_assoc($dayBeforeGames, $row['name'], 0);
-            $dayOfGames = array_push_assoc($dayOfGames, $row['name'], 0);
+            $streakArray = array_push_assoc($streakArray, $row['id'], 0);
+            $dayBeforeGames = array_push_assoc($dayBeforeGames, $row['id'], 0);
+            $dayOfGames = array_push_assoc($dayOfGames, $row['id'], 0);
         }
 
         // loop through json object of all games from last year
@@ -79,21 +79,20 @@
 
             for($i = 0; $i < sizeof($item->games); $i++) {
                 // store home and away teams
-                $home = $item->games[$i]->teams->home->team->name;
-                $away = $item->games[$i]->teams->away->team->name;
+                $home_id = $item->games[$i]->teams->home->team->id;
+                $away_id = $item->games[$i]->teams->away->team->id;
 
                 // loop through day of games and update values to 1 of teams playing
                 foreach($dayOfGames as $key => $value) {
-                    if(strcmp($value, $home) == 0) {
+                    if($value == $home_id) {
                         $dayOfGames[$key] = 1;
-                    }elseif(strcmp($key, $away) == 0) {
+                    }elseif($key == $away_id) {
                         $dayOfGames[$key] = 1;
                     }
                 }
 
                 // ignore games from all star weekend
-                if(strcmp($home, "Team Pacific") == 0 || strcmp($home, "Team Atlantic") == 0 ||
-                    strcmp($home, "Team Metropolitan") == 0 || strcmp($home, "Team Central") == 0) {
+                if($home_id == 90 || $home_id == 89|| $home_id == 88 || $home_id == 87) {
                     continue;
                 }
 
@@ -102,31 +101,132 @@
                 $awayScore = $item->games[$i]->teams->away->score;
 
                 // store current streaks for teams
-                $homeStreak = $streakArray[$home];
-                $awayStreak = $streakArray[$away];
+                $homeStreak = $streakArray[$home_id];
+                $awayStreak = $streakArray[$away_id];
 
-                // determine winner and store winner
+                // determine winner and store winner (winner is 1 for home team and 0 for away)
                 // store wins for home and away teams
                 // winning team is wins -1 because api store wins based on outcome of current game
                 if($homeScore > $awayScore) {
-                    $winner = $home;
+                    $winner = 1;
+                    $winner_id = $home_id;
 
                     // update streaks for both teams
                     $streakArray[$winner]++;
-                    $streakArray[$away] = 0;
+                    $streakArray[$away_id] = 0;
                     $home_wins = $item->games[$i]->teams->home->leagueRecord->wins - 1;
                     $away_wins = $item->games[$i]->teams->away->leagueRecord->wins;
                 } else {
-                    $winner = $away;
+                    $winner = 0;
+                    $winner_id = $away_id;
 
                     // update streaks for both teams
-                    $streakArray[$winner]++;
-                    $streakArray[$home] = 0;
+                    $streakArray[$winner_id]++;
+                    $streakArray[$home_id] = 0;
                     $away_wins = $item->games[$i]->teams->away->leagueRecord->wins - 1;
                     $home_wins = $item->games[$i]->teams->home->leagueRecord->wins;
                 }
                 // add game states to sql for insert
-                $sql .= "('".$home."', '".$away."', ".$home_wins.", ".$away_wins.", ".$homeStreak.", ".$awayStreak.", ".$dayBeforeGames[$home].", ".$dayBeforeGames[$away].", '".$winner."', '".$date."'),";
+                $sql .= "(".$home_id.", ".$away_id.", ".$home_wins.", ".$away_wins.", ".$homeStreak.", ".$awayStreak.", ".$dayBeforeGames[$home_id].", ".$dayBeforeGames[$away_id].", ".$winner.", '".$date."'),";
+            }
+        }
+        // replace last comma with a semicolon
+        $sql = substr($sql, 0, -1).";";
+
+        // insert to db
+        $conn -> query($sql);
+    }
+
+    function insertGamesToDate() {
+        $conn = getConnection();
+        $yesterdayDate = date('Y-m-d',strtotime("-1 days"));
+
+        $url = "https://statsapi.web.nhl.com/api";
+        $all_games = "/v1/schedule?startDate=2018-10-03&endDate=".$yesterdayDate;
+
+        $jsonString = file_get_contents($url.$all_games);
+        $jsonObject = json_decode($jsonString);
+        $sql = "INSERT INTO Games_ToDate VALUES ";
+        $jsonObject = $jsonObject -> dates;
+
+        // populate associative array of win streaks for teams
+        $streakArray = array();
+        $dayBeforeGames = array();
+        $dayOfGames = array();
+        $teams_from_db = $conn -> query("SELECT id FROM teams");
+        while($row = $teams_from_db -> fetch_assoc()) {
+            $streakArray = array_push_assoc($streakArray, $row['id'], 0);
+            $dayBeforeGames = array_push_assoc($dayBeforeGames, $row['id'], 0);
+            $dayOfGames = array_push_assoc($dayOfGames, $row['id'], 0);
+        }
+
+        // loop through json object of all games from last year
+        foreach($jsonObject as $key => $item) {
+            $date = $item->date;
+
+            // move values from dayOfGames to dayBeforeGames
+            // the make all day of games 0
+            foreach($dayOfGames as $key => $value) {
+                $dayBeforeGames[$key] = $value;
+                $dayOfGames[$key] = 0;
+            }
+
+            for($i = 0; $i < sizeof($item->games); $i++) {
+                // store home and away teams
+                $home_id = $item->games[$i]->teams->home->team->id;
+                $away_id = $item->games[$i]->teams->away->team->id;
+
+                // loop through day of games and update values to 1 of teams playing
+                foreach($dayOfGames as $key => $value) {
+                    if($value == $home_id) {
+                        $dayOfGames[$key] = 1;
+                    }elseif($key == $away_id) {
+                        $dayOfGames[$key] = 1;
+                    }
+                }
+
+                // ignore games from all star weekend
+                if($home_id == 90 || $home_id == 89|| $home_id == 88 || $home_id == 87) {
+                    continue;
+                }
+
+                //ignore non NHL team that played this year
+                if($home_id == 7202) {
+                    continue;
+                }
+
+                // score of the game to determine winner
+                $homeScore = $item->games[$i]->teams->home->score;
+                $awayScore = $item->games[$i]->teams->away->score;
+
+                // store current streaks for teams
+                $homeStreak = $streakArray[$home_id];
+                $awayStreak = $streakArray[$away_id];
+
+                // determine winner and store winner (winner is 1 for home team and 0 for away)
+                // store wins for home and away teams
+                // winning team is wins -1 because api store wins based on outcome of current game
+                if($homeScore > $awayScore) {
+                    $winner = 1;
+                    $winner_id = $home_id;
+
+                    // update streaks for both teams
+                    $streakArray[$winner]++;
+                    $streakArray[$away_id] = 0;
+                    $home_wins = $item->games[$i]->teams->home->leagueRecord->wins - 1;
+                    $away_wins = $item->games[$i]->teams->away->leagueRecord->wins;
+                } else {
+                    $winner = 0;
+                    $winner_id = $away_id;
+
+                    // update streaks for both teams
+                    $streakArray[$winner_id]++;
+                    $streakArray[$home_id] = 0;
+                    $away_wins = $item->games[$i]->teams->away->leagueRecord->wins - 1;
+                    $home_wins = $item->games[$i]->teams->home->leagueRecord->wins;
+                }
+                // add game states to sql for insert
+                $sql .= "(".$home_id.", ".$away_id.", ".$home_wins.", ".$away_wins.", ".$homeStreak.", ".$awayStreak.", ".$dayBeforeGames[$home_id].", ".$dayBeforeGames[$away_id].", ".$winner.", '".$date."'),";
             }
         }
         // replace last comma with a semicolon

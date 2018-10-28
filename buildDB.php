@@ -32,8 +32,9 @@
 
                         <p>
                             <?php
-                                insertTeams();
+                                //insertTeams();
                                 insertLastYearGames();
+                                insertGamesToDate();
 
                                 echo "<h2>Done</h2>";
                             ?>

@@ -48,7 +48,7 @@
         $conn = getConnection();
 
         $url = "https://statsapi.web.nhl.com/api";
-        $all_games = "/v1/schedule?startDate=2017-10-04&endDate=2018-04-04";
+        $all_games = "/v1/schedule?startDate=2017-10-04&endDate=2018-04-10";
 
         $jsonString = file_get_contents($url.$all_games);
         $jsonObject = json_decode($jsonString);

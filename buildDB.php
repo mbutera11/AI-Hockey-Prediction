@@ -33,8 +33,9 @@
                         <p>
                             <?php
                                 //insertTeams();
-                                insertLastYearGames();
+                                //insertLastYearGames();
                                 //insertGamesToDate();
+                                insertLastFiveYears();
 
                                 echo "<h2>Done</h2>";
                             ?>

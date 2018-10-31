@@ -37,13 +37,17 @@
                                 $url = "https://statsapi.web.nhl.com/api";
                                 $next_game = "/v1/teams/18/?expand=team.schedule.next";
                                 $team_stats = "/v1/teams/18/?expand=team.stats";
-                                $all_games_lastYear = "/v1/schedule?startDate=2017-10-04&endDate=2018-04-04";
-                                $all_games_today = "/v1/schedule?startDate=2018-10-12&endDate=2018-10-12";
+                                $all_games_lastYear = "/v1/schedule?startDate=2017-10-04&endDate=2018-04-10";
+
+                                $todayDate = date('Y-m-d');
+                                $all_games_today = "/v1/schedule?startDate=".$todayDate."&endDate=".$todayDate;
+
+                                $all_games_5Years = "/v1/schedule?startDate=2013-10-01&endDate=2018-04-10";
 
                                 $yesterdayDate = date('Y-m-d',strtotime("-1 days"));
-                                $all_games = "/v1/schedule?startDate=2018-10-03&endDate=".$yesterdayDate;
+                                $all_games_yesterday = "/v1/schedule?startDate=2018-10-03&endDate=".$yesterdayDate;
 
-                                $jsonString = file_get_contents($url.$all_games);
+                                $jsonString = file_get_contents($url.$all_games_5Years);
                                 echo prettyPrint($jsonString);
 
                             ?>

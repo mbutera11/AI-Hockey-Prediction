@@ -11,139 +11,78 @@ db = mysql.connector.connect(
 )
 cursor = db.cursor()
 
-home = []
-# away = []
-team_wins = []
-opp_wins = []
-team_streak = []
-opp_streak = []
-team_b2b = []
-opp_b2b = []
+home_wins = []
+away_wins = []
+home_streak = []
+away_streak = []
+home_b2b = []
+away_b2b = []
 
 winner = []
 
 # select all predators games from db
-cursor.execute("SELECT * FROM LastYear_Games WHERE home_id = 18 or away_id = 18");
+cursor.execute("SELECT * FROM Games_Last5Years");
 result = cursor.fetchall()
 
-# cursor.execute("SELECT * FROM LastYear_Games")
-# result = cursor.fetchall()
-
 for x in result:
-    # if team is home
-    if x[0] == 18:
-        home.append(1)
-        team_wins.append(x[2])
-        opp_wins.append(x[3])
-        team_streak.append(x[4])
-        opp_streak.append(x[5])
-        team_b2b.append(x[6])
-        opp_b2b.append(x[7])
-        if x[8] == 1:
-            # team wins
-            winner.append(1)
-        else:
-            # team loses
-            winner.append(0)
+    home_wins.append(x[2])
+    away_wins.append(x[3])
+    home_streak.append(x[4])
+    away_streak.append(x[5])
+    home_b2b.append(x[6])
+    away_b2b.append(x[7])
 
-    # if team is away
-    else:
-        home.append(0)
-        team_wins.append(x[3])
-        opp_wins.append(x[2])
-        team_streak.append(x[5])
-        opp_streak.append(x[4])
-        team_b2b.append(x[7])
-        opp_b2b.append(x[6])
-        if x[8] == 1:
-            # team loses
-            winner.append(0)
-        else:
-            # team wins
-            winner.append(1)
+    winner.append(x[8])
 
-    # home.append(x[0])
-    # away.append(x[1])
-    # team_wins.append(x[2])
-    # opp_wins.append(x[3])
-    # team_streak.append(x[4])
-    # opp_streak.append(x[5])
-    # team_b2b.append(x[6])
-    # opp_b2b.append(x[7])
-    # winner.append(x[8])
-
-# features = list(zip(home, away, home_wins, away_wins, home_streak, away_streak, home_b2b, away_b2b))
-features = list(zip(home, team_wins, opp_wins, team_streak, opp_streak, team_b2b, opp_b2b))
+features = list(zip(home_wins, away_wins, home_streak, away_streak, home_b2b, away_b2b))
 
 model = KNeighborsClassifier(n_neighbors=3)
 model.fit(features, winner)
 
 
-cursor.execute("SELECT * FROM Games_ToDate WHERE home_id = 18 or away_id = 18")
+cursor.execute("SELECT * FROM Games_ToDate")
 result = cursor.fetchall()
 
-randomGameIndex = random.randint(0, len(result))
-randomGame = result[randomGameIndex]
+# -------------- predict random game -----------------------
 
-randomGameValues = []
-
-# if team is home
-if randomGame[0] == 18:
-    randomGameValues.append(1)
-    randomGameValues.append(randomGame[2])
-    randomGameValues.append(randomGame[3])
-    randomGameValues.append(randomGame[4])
-    randomGameValues.append(randomGame[5])
-    randomGameValues.append(randomGame[6])
-    randomGameValues.append(randomGame[7])
-
-    if randomGame[8] == 1:
-        # team wins
-        randomGameValues.append(1)
-    else:
-        # team loses
-        randomGameValues.append(0)
-
-# if team is away
-else:
-    randomGameValues.append(0)
-    randomGameValues.append(randomGame[3])
-    randomGameValues.append(randomGame[2])
-    randomGameValues.append(randomGame[5])
-    randomGameValues.append(randomGame[4])
-    randomGameValues.append(randomGame[7])
-    randomGameValues.append(randomGame[6])
-
-    if randomGame[8] == 1:
-        # team loses
-        randomGameValues.append(0)
-    else:
-        # team wins
-        randomGameValues.append(1)
-
-predicted = model.predict([[randomGameValues[0],
-                            randomGameValues[1],
-                            randomGameValues[2],
-                            randomGameValues[3],
-                            randomGameValues[4],
-                            randomGameValues[5],
-                            randomGameValues[6]]])
-
-print(randomGame)
-cursor.execute("SELECT name FROM teams WHERE id = " + str(randomGame[0]))
-homeTeam = cursor.fetchall()
+# randomGameIndex = random.randint(0, len(result))
+# randomGame = result[randomGameIndex]
+#
+# predicted = model.predict([[randomGame[2],
+#                             randomGame[3],
+#                             randomGame[4],
+#                             randomGame[5],
+#                             randomGame[6],
+#                             randomGame[7]]])
+#
+# print(randomGame)
+# cursor.execute("SELECT name FROM teams WHERE id = " + str(randomGame[0]))
+# homeTeam = cursor.fetchone()
+#
+#
+# cursor.execute("SELECT name FROM teams WHERE id = " + str(randomGame[1]))
+# awayTeam = cursor.fetchone()
+#
+# print("Game: " + homeTeam[0] + " vs. " + awayTeam[0])
+#
+# print("Estimated Answer: " + str(predicted))
+# print("Actual Answer: " + str(randomGame[8]))
 
 
-cursor.execute("SELECT name FROM teams WHERE id = " + str(randomGame[1]))
-awayTeam = cursor.fetchall()
+# get prediction accuracy
+total = len(result)
+correct = 0
 
-for x in homeTeam:
-    print(x)
+for y in result:
+    predicted = model.predict([[y[2],
+                                y[3],
+                                y[4],
+                                y[5],
+                                y[6],
+                                y[7]]])
+    if str(predicted[0]) == str(y[8]):
+        correct += 1
 
-print(" vs. ")
+accuracy = correct/total
 
-for y in awayTeam:
-    print(y)
-
-print("Estimated Answer: " + str(predicted))
-print("Actual Answer: " + str(randomGameValues[7]))
+print("Accuracy: " + str(accuracy))

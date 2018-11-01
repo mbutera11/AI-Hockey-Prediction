@@ -24,11 +24,71 @@
 
     }
 
+    function createTables() {
+        $conn = getConnection();
+
+        $sql = "create table teams
+                (
+                  id           int         not null,
+                  name         text        not null,
+                  abbreviation text        not null,
+                  location     varchar(50) not null,
+                  conference   text        not null,
+                  division     text        not null
+                );";
+        $conn -> query($sql);
+
+
+        $sql = "CREATE TABLE `LastYear_Games` (
+                              `home_id` int(2) NOT NULL,
+                              `away_id` int(2) NOT NULL,
+                              `home_wins` int(2) NOT NULL,
+                              `away_wins` int(2) NOT NULL,
+                              `home_streak` int(2) NOT NULL,
+                              `away_streak` int(2) NOT NULL,
+                              `home_b2b` tinyint(1) NOT NULL,
+                              `away_b2b` tinyint(1) NOT NULL,
+                              `winner` int(2) NOT NULL,
+                              `game_date` varchar(11) NOT NULL
+                            )";
+        $conn -> query($sql);
+
+        $sql = "CREATE TABLE `Games_ToDate` (
+                              `home_id` int(2) NOT NULL,
+                              `away_id` int(2) NOT NULL,
+                              `home_wins` int(2) NOT NULL,
+                              `away_wins` int(2) NOT NULL,
+                              `home_streak` int(2) NOT NULL,
+                              `away_streak` int(2) NOT NULL,
+                              `home_b2b` tinyint(1) NOT NULL,
+                              `away_b2b` tinyint(1) NOT NULL,
+                              `winner` int(2) NOT NULL,
+                              `game_date` varchar(11) NOT NULL
+                            )";
+        $conn -> query($sql);
+
+
+        $sql = "CREATE TABLE `Games_Last5Years` (
+                              `home_id` int(2) NOT NULL,
+                              `away_id` int(2) NOT NULL,
+                              `home_wins` int(2) NOT NULL,
+                              `away_wins` int(2) NOT NULL,
+                              `home_streak` int(2) NOT NULL,
+                              `away_streak` int(2) NOT NULL,
+                              `home_b2b` tinyint(1) NOT NULL,
+                              `away_b2b` tinyint(1) NOT NULL,
+                              `winner` int(2) NOT NULL,
+                              `game_date` varchar(11) NOT NULL
+                            )";
+        $conn -> query($sql);
+
+    }
+
     // insert current teams to db
     function insertTeams() {
         $conn = getConnection();
 
-        $url = "https://statsapi.web.nhl.com/api";
+        $url = "https://statsapi.web.nhl.com/api/v1/teams";
 
         $jsonString = file_get_contents($url);
         $jsonObject = json_decode($jsonString);

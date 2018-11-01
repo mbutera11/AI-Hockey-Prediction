@@ -32,10 +32,11 @@
 
                         <p>
                             <?php
-                                //insertTeams();
-                                //insertLastYearGames();
-                                //insertGamesToDate();
-                                insertLastFiveYears();
+//                                createTables();
+//                                insertTeams();
+//                                insertLastYearGames();
+//                                insertGamesToDate();
+//                                insertLastFiveYears();
 
                                 echo "<h2>Done</h2>";
                             ?>

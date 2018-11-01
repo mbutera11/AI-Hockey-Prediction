@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5318e89-feae-4893-b2d4-175c5c14cef5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/python_scripts/functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/3a2d91e4-e272-483d-8891-359dc6d871e8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3a2d91e4-e272-483d-8891-359dc6d871e8.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apitest.php" beforeDir="false" afterPath="$PROJECT_DIR$/apitest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildDB.php" beforeDir="false" afterPath="$PROJECT_DIR$/buildDB.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_scripts/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/python_scripts/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python_scripts/.idea/dataSources/91fe7b83-ace0-4d53-b260-a3643276634a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/python_scripts/.idea/dataSources/91fe7b83-ace0-4d53-b260-a3643276634a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python_scripts/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/python_scripts/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python_scripts/training2.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_scripts/training2.py" afterDir="false" />
@@ -78,20 +81,21 @@
     <session id="2032015738">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.46" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="2" />
           <entry key="php" value="9" />
-          <entry key="sql" value="1" />
+          <entry key="sql" value="3" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
@@ -100,20 +104,21 @@
           <entry key="HTML" value="2" />
           <entry key="PHP" value="9" />
           <entry key="PLAIN_TEXT" value="1" />
+          <entry key="SQL" value="2" />
           <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="58" />
-          <entry key="php" value="7171" />
+          <entry key="php" value="7294" />
           <entry key="txt" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="58" />
-          <entry key="PHP" value="7171" />
+          <entry key="PHP" value="7294" />
           <entry key="PLAIN_TEXT" value="18" />
         </counts>
       </usages-collector>
@@ -134,7 +139,7 @@
         <entry file="file://$PROJECT_DIR$/menuBar.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="12" column="46" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+              <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -143,7 +148,7 @@
         <entry file="file://$PROJECT_DIR$/apitest.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="702">
-              <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
+              <caret line="54" selection-start-line="54" selection-end-line="54" />
             </state>
           </provider>
         </entry>
@@ -151,8 +156,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="637">
-              <caret line="187" column="60" selection-start-line="187" selection-start-column="60" selection-end-line="187" selection-end-column="60" />
+            <state relative-caret-position="600">
+              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
         </entry>
@@ -160,11 +165,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/buildDB.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="32" lean-forward="true" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
-              <folding>
-                <element signature="e#4767#4773#0#HTML" expanded="true" />
-              </folding>
+            <state relative-caret-position="510">
+              <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="38" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -182,8 +184,8 @@
         <option value="$PROJECT_DIR$/teams.php" />
         <option value="$PROJECT_DIR$/menuBar.php" />
         <option value="$PROJECT_DIR$/apitest.php" />
-        <option value="$PROJECT_DIR$/buildDB.php" />
         <option value="$PROJECT_DIR$/functions.php" />
+        <option value="$PROJECT_DIR$/buildDB.php" />
       </list>
     </option>
   </component>
@@ -209,11 +211,6 @@
             <path>
               <item name="hockey" type="b2602c69:ProjectViewProjectNode" />
               <item name="hockey" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hockey" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hockey" type="462c0819:PsiDirectoryNode" />
-              <item name="python_scripts" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -255,17 +252,18 @@
       <workItem from="1540756108499" duration="3093000" />
       <workItem from="1540773817673" duration="625000" />
       <workItem from="1540938868897" duration="2332000" />
+      <workItem from="1541020500817" duration="940000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24728000" />
+    <option name="totallyTimeSpent" value="25668000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4993804" visible="true" weight="0.14336775" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4993804" visible="true" weight="0.14455917" />
       <window_info id="Structure" order="1" sideWeight="0.5006196" side_tool="true" weight="0.24964234" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -302,9 +300,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3a2d91e4-e272-483d-8891-359dc6d871e8/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3a2d91e4-e272-483d-8891-359dc6d871e8/console.sql" />
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -315,31 +311,42 @@
     <entry file="file://$PROJECT_DIR$/menuBar.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="12" column="46" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://3a2d91e4-e272-483d-8891-359dc6d871e8/schema/hockey/table/games_last5years.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://3a2d91e4-e272-483d-8891-359dc6d871e8/schema/hockey/table/teams.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="9" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="38" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apitest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
-          <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/buildDB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="32" lean-forward="true" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
-          <folding>
-            <element signature="e#4767#4773#0#HTML" expanded="true" />
-          </folding>
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="187" column="60" selection-start-line="187" selection-start-column="60" selection-end-line="187" selection-end-column="60" />
+        <state relative-caret-position="600">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>

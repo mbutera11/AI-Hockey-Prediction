@@ -2,6 +2,9 @@ import mysql.connector
 import random
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
+from sklearn import tree
+from sklearn import svm
+import graphviz
 
 
 def predictionAccuracy():
@@ -38,8 +41,14 @@ def predictionAccuracy():
 
     features = list(zip(home_wins, away_wins, home_streak, away_streak, home_b2b, away_b2b))
 
-    model = KNeighborsClassifier(n_neighbors=3)
+    # model = KNeighborsClassifier(n_neighbors=3)
+    # model.fit(features, winner)
+
+    model = tree.DecisionTreeClassifier()
     model.fit(features, winner)
+
+    # model = svm.SVC(kernel='linear')
+    # model.fit(features, winner)
 
     cursor.execute("SELECT * FROM Games_ToDate")
     result = cursor.fetchall()
@@ -71,7 +80,7 @@ def trainTestSplit():
     )
     cursor = db.cursor()
 
-    cursor.execute("SELECT * FROM Games_Last5Years");
+    cursor.execute("SELECT * FROM LastYear_Games");
     result = cursor.fetchall()
 
     features = []
@@ -83,8 +92,19 @@ def trainTestSplit():
 
     x_train, x_test, y_train, y_test = train_test_split(features, target, test_size=0.3)
 
-    model = KNeighborsClassifier(n_neighbors=3)
+    # model = KNeighborsClassifier(n_neighbors=3)
+    # model.fit(x_train, y_train)
+
+    model = tree.DecisionTreeClassifier()
     model.fit(x_train, y_train)
+
+    data = tree.export_graphviz(model, out_file=None)
+    graph = graphviz.Source(data)
+    graph.render("hockey")
+
+
+    # model = svm.SVC(kernel='linear')
+    # model.fit(x_train, y_train)
 
     predictions = model.predict(x_test)
 
@@ -126,8 +146,14 @@ def predictRandomGame():
 
     features = list(zip(home_wins, away_wins, home_streak, away_streak, home_b2b, away_b2b))
 
-    model = KNeighborsClassifier(n_neighbors=3)
+    # model = KNeighborsClassifier(n_neighbors=3)
+    # model.fit(features, winner)
+
+    model = tree.DecisionTreeClassifier()
     model.fit(features, winner)
+
+    # model = svm.SVC(kernel='linear')
+    # model.fit(features, winner)
 
     cursor.execute("SELECT * FROM Games_ToDate")
     result = cursor.fetchall()

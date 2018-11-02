@@ -1,6 +1,6 @@
 from functions import predictionAccuracy, trainTestSplit, predictRandomGame
 
 
-predictionAccuracy()
+# predictionAccuracy()
 trainTestSplit()
-predictRandomGame()
+# predictRandomGame()

@@ -82,6 +82,17 @@
                             )";
         $conn -> query($sql);
 
+        $sql = "CREATE TABLE `Stats` (
+                              `team_id` int(11) NOT NULL,
+                              `goals_for` decimal(3,2) NOT NULL,
+                              `goals_against` decimal(3,2) NOT NULL,
+                              `pp_rate` decimal(3,1) NOT NULL,
+                              `pk_rate` decimal(3,1) NOT NULL,
+                              `shot_percent` decimal(3,1) NOT NULL,
+                              `save_percent` decimal(4,3) NOT NULL
+                            )";
+        $conn -> query($sql);
+
     }
 
     // insert current teams to db
@@ -399,6 +410,33 @@
         // insert to db
         $conn -> query($sql);
     }
+
+    // insert team stats for every team
+    // stats include:
+    // goals per game, goals against per game, power play %, penalty kill %, shooting %, and save %
+    function insertTeamStats() {
+        $conn = getConnection();
+        $sql = "SELECT id FROM teams";
+        $result = $conn -> query($sql);
+        $insertSql = "INSERT INTO Stats VALUES ";
+        while($row = $result -> fetch_assoc()) {
+            $team_id = $row["id"];
+            $url = "https://statsapi.web.nhl.com/api/v1/teams/".$team_id."/stats";
+            $jsonString = file_get_contents($url);
+            $jsonObject = json_decode($jsonString);
+
+            // get all stats from API
+            $jsonObject = $jsonObject -> stats[0] -> splits[0] -> stat;
+            $insertSql .= "(".$team_id.", ".$jsonObject->goalsPerGame.", ".$jsonObject->goalsAgainstPerGame.", ".$jsonObject->powerPlayPercentage.", ".$jsonObject->penaltyKillPercentage.", ".$jsonObject->shootingPctg.", ".$jsonObject->savePctg."),";
+
+
+        }
+        // replace last comma with a semicolon
+        $insertSql = substr($insertSql, 0, -1).";";
+
+        $conn -> query($insertSql);
+    }
+
 
     function prettyPrint($jsonString) {
 

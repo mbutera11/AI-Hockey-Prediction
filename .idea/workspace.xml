@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5318e89-feae-4893-b2d4-175c5c14cef5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/python_scripts/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/3a2d91e4-e272-483d-8891-359dc6d871e8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3a2d91e4-e272-483d-8891-359dc6d871e8.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apitest.php" beforeDir="false" afterPath="$PROJECT_DIR$/apitest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildDB.php" beforeDir="false" afterPath="$PROJECT_DIR$/buildDB.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_scripts/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/python_scripts/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_scripts/.idea/dataSources/91fe7b83-ace0-4d53-b260-a3643276634a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/python_scripts/.idea/dataSources/91fe7b83-ace0-4d53-b260-a3643276634a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python_scripts/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/python_scripts/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_scripts/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_scripts/functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python_scripts/training2.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_scripts/training2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,6 +70,13 @@
         <item name="MySQL - hockey@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="hockey: schema" type="c314c289:MysqlImplModel$Schema" />
+        <item name="Stats: table" type="98d5ac3d:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - hockey@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="hockey: schema" type="c314c289:MysqlImplModel$Schema" />
         <item name="teams: table" type="98d5ac3d:MysqlImplModel$Table" />
       </path>
     </expand>
@@ -83,12 +88,13 @@
         <counts>
           <entry key="project.closed" value="5" />
           <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.46" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -111,14 +117,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="58" />
-          <entry key="php" value="7294" />
+          <entry key="php" value="7953" />
           <entry key="txt" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="58" />
-          <entry key="PHP" value="7294" />
+          <entry key="PHP" value="7953" />
           <entry key="PLAIN_TEXT" value="18" />
         </counts>
       </usages-collector>
@@ -138,7 +144,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/menuBar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="195">
               <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
             </state>
           </provider>
@@ -147,8 +153,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apitest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="702">
-              <caret line="54" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="627">
+              <caret line="49" column="89" selection-start-line="49" selection-start-column="89" selection-end-line="49" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -156,8 +162,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="911">
+              <caret line="427" column="38" selection-start-line="427" selection-start-column="38" selection-end-line="427" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -165,8 +171,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/buildDB.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="38" selection-end-column="56" />
+            <state relative-caret-position="585">
+              <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
+              <folding>
+                <element signature="e#842#891#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -184,8 +193,8 @@
         <option value="$PROJECT_DIR$/teams.php" />
         <option value="$PROJECT_DIR$/menuBar.php" />
         <option value="$PROJECT_DIR$/apitest.php" />
-        <option value="$PROJECT_DIR$/functions.php" />
         <option value="$PROJECT_DIR$/buildDB.php" />
+        <option value="$PROJECT_DIR$/functions.php" />
       </list>
     </option>
   </component>
@@ -253,17 +262,18 @@
       <workItem from="1540773817673" duration="625000" />
       <workItem from="1540938868897" duration="2332000" />
       <workItem from="1541020500817" duration="940000" />
+      <workItem from="1541132549492" duration="1895000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25668000" />
+    <option name="totallyTimeSpent" value="27563000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4993804" visible="true" weight="0.14455917" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4993804" visible="true" weight="0.1457506" />
       <window_info id="Structure" order="1" sideWeight="0.5006196" side_tool="true" weight="0.24964234" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -301,20 +311,6 @@
       </provider>
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3a2d91e4-e272-483d-8891-359dc6d871e8/console.sql" />
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/menuBar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://3a2d91e4-e272-483d-8891-359dc6d871e8/schema/hockey/table/games_last5years.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -329,24 +325,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/buildDB.php">
+    <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="38" selection-end-column="56" />
+        <state relative-caret-position="285">
+          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/menuBar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apitest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        <state relative-caret-position="627">
+          <caret line="49" column="89" selection-start-line="49" selection-start-column="89" selection-end-line="49" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
+          <folding>
+            <element signature="e#842#891#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="911">
+          <caret line="427" column="38" selection-start-line="427" selection-start-column="38" selection-end-line="427" selection-end-column="38" />
         </state>
       </provider>
     </entry>

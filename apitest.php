@@ -47,7 +47,7 @@
                                 $yesterdayDate = date('Y-m-d',strtotime("-1 days"));
                                 $all_games_yesterday = "/v1/schedule?startDate=2018-10-03&endDate=".$yesterdayDate;
 
-                                $jsonString = file_get_contents($url.$all_games_5Years);
+                                $jsonString = file_get_contents($url.$all_games_yesterday);
                                 echo prettyPrint($jsonString);
 
                             ?>
